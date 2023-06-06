@@ -6,9 +6,12 @@
 let unix = dayjs().unix();
 
 // converts unix timestamp to mm/dd/yyyy format
-let unixFormt = dayjs.unix(unix).format("dd/mmmmm/d");
+let unixFormat = dayjs.unix(unix).format("dddd, MMMM D");
+let currentHour = dayjs.unix(unix).format("HH");
 
-
+let currentDayEl = $("#currentDay");
+let containerEl = $("#hour-block-container");
+let hourElements = containerEl.children().toArray();
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
@@ -23,10 +26,14 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
+  hourElements.forEach((hour) => {});
+  console.log(hourElements[1].getAttribute("id").substring(5));
+
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
+  currentDayEl.text(unixFormat);
 });
